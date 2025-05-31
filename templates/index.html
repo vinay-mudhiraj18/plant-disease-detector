@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Plant Disease Detector</title>
+  <style>
+    body { font-family: Arial; text-align: center; padding: 30px; }
+    .container { max-width: 600px; margin: auto; }
+    img { width: 300px; margin-top: 20px; border-radius: 10px; }
+    .result { margin-top: 20px; font-size: 18px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🌿 Plant Disease Detection</h1>
+    <form method="POST" enctype="multipart/form-data">
+      <input type="file" name="image" accept="image/*" required>
+      <br><br>
+      <button type="submit">Detect Disease</button>
+    </form>
+
+    {% if prediction %}
+      <div class="result">
+        <h2>🧪 Prediction: {{ prediction }} ({{ confidence }}%)</h2>
+        <p><strong>💊 Remedy:</strong> {{ remedy }}</p>
+        <img src="{{ img_path }}" alt="Leaf Image">
+      </div>
+    {% endif %}
+  </div>
+</body>
+</html>
